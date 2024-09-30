@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/addSection.css">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        {% if 'successfully' in message|lower %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div id="outer_div">
+        <div id="inner_div">
+            <div id="trans-area">
+                <h2 class="headings">Update Section</h2>
+                <form class="row g-3 p-2" action="" method="POST">
+                    
+                    <div class="form-group">
+                        <label for="sectionName" class="form-label">Section Name:</label>
+                        <input type="text" 
+                        name="name" 
+                        id="sectionName" 
+                        class="form-control" 
+                        value="{{section.name}}"
+                        required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sectionDate" class="form-label">Section Date:</label>
+                        <input type="text" 
+                        name="date" 
+                        id="sectionDate" 
+                        class="form-control" 
+                        value="{{section.date}}"
+                        required>
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
