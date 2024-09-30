@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/addSection.css">
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        {% if 'successfully' in message|lower %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div id="outer_div">
+        <div id="inner_div">
+            <div id="trans-area" style="height: 637px; margin-top: -15px;" >
+                <h2 class="headings">Add Book</h2>
+                <form class="row g-3 p-2" action="" method="POST">
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Book Name:</label>
+                        <input type="text" name="name" class="form-control" id="name" required>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="author_name" class="form-label">Author Name:</label>
+                        <input type="text" name="author_name" class="form-control" id="author_name" required>
+
+                    </div>
+                    <div>
+                        <label for="enterDateOfAddition" class="form-label">Date of Addition:</label>
+                        <input type="date" name="date" value="{{todaysDate}}" class="form-control" id="enterDateOfAddition" required>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="section_id" class="form-label">Section:</label>
+                        <select type="text" name="section_id" class="form-control" id="section_id" required>
+                            {% for sec in sections %}
+                            {% if sec.id==section.id %}
+                                <option selected value="{{sec.id}}">{{sec.name}}</option>
+                            {% else %}
+                                <option  value="{{sec.id}}">{{sec.name}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content:</label>
+                        <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+                      </div>
+                    
+                    <div id="create-btn">
+                        <button type="submit" class="btn btn-primary mb-3">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
