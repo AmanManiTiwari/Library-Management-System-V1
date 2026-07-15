@@ -30,7 +30,6 @@ Librarians can organize the catalog into sections, manage books, review borrowin
 
 A companion project report (`Library Management System Report.pdf`) documenting the design and implementation is included in the repository root.
 
-> ⚠️ **Note:** This project was built as an academic/learning exercise. It demonstrates core CRUD, session-based authentication, and REST API design patterns in Flask, but is **not hardened for production use** — see [Known Limitations](#-known-limitations--roadmap) before deploying it publicly.
 
 ---
 
@@ -111,8 +110,6 @@ The app starts in debug mode at **http://127.0.0.1:5000**. On first run, the SQL
 | Email | `admin@gmailcom` |
 | Password | `0` |
 
-> ⚠️ Change these credentials before any real-world use — see [Known Limitations](#-known-limitations--roadmap).
-
 ---
 
 ## 🧭 Usage
@@ -191,21 +188,6 @@ Feedback ── User, Book
 - **Request** — a member's pending request for a Book
 - **Issue** — a Book currently checked out to a User
 - **Feedback** — a member's comment on a Book
-
----
-
-## ⚠️ Known Limitations & Roadmap
-
-This project prioritizes core functionality over production hardening. Notable areas for improvement:
-
-- [ ] **Password hashing** — passwords are currently stored in plain text; integrate `werkzeug.security` or `bcrypt`
-- [ ] **Secret key management** — move `SECRET_KEY` and DB URI to environment variables instead of hardcoding
-- [ ] **Input validation** — add stricter server-side validation and CSRF protection on forms
-- [ ] **`requirements.txt`** — pin dependency versions for reproducible setup
-- [ ] **Automated tests** — add unit/integration tests for routes and models
-- [ ] **Pagination & filtering** — for large catalogs in the dashboard and API
-
-Contributions addressing any of the above are very welcome.
 
 ---
 
